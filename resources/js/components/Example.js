@@ -1,19 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import "./fontawesome";
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import Home from "./Home";
+import dashboard from "./dashboard";
+import createPosts from "./createPosts";
+import EditPosts from "./EditPosts";
+import Navbar from "./navbar";
+import "../../css/app.css";
 
 function Example() {
     return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-md-8">
-                    <div className="card">
-                        <div className="card-header">Example Component</div>
+        <Router>
+            <>
+            <Navbar />
+            <Switch>
 
-                        <div className="card-body">I'm an example component!</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <Route path="/" exact component={Home} />
+                <Route path="/dashboard" exact component={dashboard} />
+                <Route path="/addPosts" exact component={createPosts} />
+                <Route path="/edit/:id" exact component={EditPosts} />
+            </Switch>
+            </>
+        </Router>
     );
 }
 
